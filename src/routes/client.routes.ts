@@ -19,7 +19,7 @@ export async function clientRoutes(fastify: FastifyInstance) {
                 cep
             });
 
-            reply.send(data);
+            reply.send("Usuário cadastrado com sucesso.").status(200);
         } catch (err) {
             reply.send(err);
         }

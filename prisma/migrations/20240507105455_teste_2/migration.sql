@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "Client" ADD COLUMN     "accessCode" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "token" TEXT NOT NULL DEFAULT '';
+
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "accessCode" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "token" TEXT NOT NULL DEFAULT '';

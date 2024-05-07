@@ -1,5 +1,7 @@
 export interface User {
     id: string;
+    accessCode: number;
+    token: string;
     fullName: string;
     email: string;
     phoneNumber: string;
@@ -17,7 +19,18 @@ export interface UserCreate {
     categoryId: string;
 };
 
+export interface Login {
+    email: string;
+};
+
+export interface ConfirmAccessCode {
+    email: string;
+    code: number;
+};
+
 export interface UserRepository {
     create(data: UserCreate): Promise<User>;
-    findByPhoneNumber(phoneNumber: string): Promise<User | null>;
+    findByEmail(email: string): Promise<User | null>;
+    setAccessCode(email: string, code: number): Promise<User>;
+    setToken(email: string, token: string): Promise<User>;
 };

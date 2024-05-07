@@ -2,6 +2,7 @@ import prismaClient from '../database/prisma-client';
 import { Client, ClientCreate } from '../interfaces/client.interface';
 
 class ClientRepositoryPrisma {
+
     async create(data: ClientCreate): Promise<Client> {
 
         const { fullName, email, phoneNumber, cep } = data;
@@ -18,15 +19,16 @@ class ClientRepositoryPrisma {
         return result;
     };
 
-    async findByPhoneNumber(phoneNumber: string): Promise<Client | null> {
+    async findByEmail(email: string): Promise<Client | null> {
         const result = await prismaClient.client.findFirst({
             where: {
-                phoneNumber: phoneNumber
+                email: email
             }
         });
 
         return result ?? null;
     };
+
 };
 
 export { ClientRepositoryPrisma };

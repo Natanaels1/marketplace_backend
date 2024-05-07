@@ -2,6 +2,7 @@ import prismaClient from '../database/prisma-client';
 import { Category, CategoryCreate } from '../interfaces/category.interface';
 
 class CategoryRepositoryPrisma {
+
     async create(data: CategoryCreate): Promise<Category> {
         const { name, imageUrl } = data;
         const result = await prismaClient.category.create({
@@ -19,6 +20,7 @@ class CategoryRepositoryPrisma {
 
         return result;
     };
+    
 };
 
 export { CategoryRepositoryPrisma };

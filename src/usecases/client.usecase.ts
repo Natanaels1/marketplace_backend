@@ -10,10 +10,10 @@ class ClientUseCase {
     };
 
     async create({fullName, email, phoneNumber, cep}: ClientCreate): Promise<Client> {
-        const verifyIfClientExists = await this.ClientRepositoryPrisma.findByPhoneNumber(phoneNumber);
+        const verifyIfClientExists = await this.ClientRepositoryPrisma.findByEmail(email);
         
         if(verifyIfClientExists) {
-            throw new Error(`Numero de telefone já cadastrado!`);
+            throw new Error(`E-mail já cadastrado!`);
         };
 
         const result = await this.ClientRepositoryPrisma.create({

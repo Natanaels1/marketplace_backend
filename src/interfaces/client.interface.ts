@@ -6,7 +6,6 @@ export interface Client {
     cep: string;
     created_at: Date;
     updated_at: Date;
-    categoryId: string;
 };
 
 export interface ClientCreate {
@@ -18,5 +17,5 @@ export interface ClientCreate {
 
 export interface ClientRepository {
     create(data: ClientCreate): Promise<Client>;
-    findByPhoneNumber(phoneNumber: string): Promise<Client | null>;
+    findByEmail(email: string): Promise<Client | null>;
 };
