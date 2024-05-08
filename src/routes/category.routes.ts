@@ -7,7 +7,7 @@ export async function categoryRoutes(fastify: FastifyInstance) {
     
     const categoryUseCase = new CategoryUseCase();
     
-    fastify.post("/", async (req, reply) => {
+    fastify.post("/register", async (req, reply) => {
 
         const { name, imageUrl } = req.body as CategoryCreate;
         

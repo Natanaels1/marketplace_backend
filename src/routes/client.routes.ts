@@ -7,7 +7,7 @@ export async function clientRoutes(fastify: FastifyInstance) {
     
     const clientUseCase = new ClientUseCase();
     
-    fastify.post("/", async (req, reply) => {
+    fastify.post("/register", async (req, reply) => {
 
         const { fullName, email, phoneNumber, cep } = req.body as ClientCreate;
         
