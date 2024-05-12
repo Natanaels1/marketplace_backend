@@ -16,5 +16,6 @@ export interface ServiceCreate {
 
 export interface ServiceRepository {
     create(data: ServiceCreate): Promise<Service>;
+    update(data: ServiceCreate): Promise<string>;
     get(id: string): Promise<Service | null>;
 };

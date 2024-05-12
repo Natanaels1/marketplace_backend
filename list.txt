@@ -1,0 +1,8 @@
+Adicionar flag para verificar se user e client estão ativos
+Criar metodo para desativar e ativar
+Edição de user e client
+Edição de serviço
+geração de comprovante de serviço realizado
+Get de serviços
+Get de user e client
+Criar metodo para apagar conta, mas sem excluir historicos de serviços

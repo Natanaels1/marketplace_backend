@@ -1,6 +1,6 @@
 import { ConfirmAccessCode, Login, User, UserCreate, UserRepository } from "../interfaces/user.interface";
 import { UserRepositoryPrisma } from "../repositories/user.repository";
-import { sendEmailCode } from "../services/sendEmailCode";
+import { sendEmailCode } from "../middleware/sendEmailCode";
 const jwt = require('jsonwebtoken');
 
 class UserUseCase {
@@ -55,7 +55,7 @@ class UserUseCase {
             throw new Error(`Código inválido.`);
         };
 
-        const token = jwt.sign({ id: verifyIfUserExists?.id }, `${code}`, { expiresIn: '24h' });
+        const token = jwt.sign({ id: verifyIfUserExists?.id }, process.env.SECRET_KEY, { expiresIn: '24h' });
 
         const result = await this.UserRepositoryPrisma.setToken(email, token);
 

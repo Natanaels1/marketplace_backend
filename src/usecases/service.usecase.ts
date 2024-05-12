@@ -16,6 +16,12 @@ class ServiceUseCase {
         return result;
     };
 
+    async update(data: ServiceCreate): Promise<string> {
+        const result = await this.ServiceRepositoryPrisma.update(data);
+
+        return result;
+    };
+
     async get(id: string): Promise<Service | null> {
         
         const result = await this.ServiceRepositoryPrisma.get(id);

@@ -29,6 +29,24 @@ class ClientRepositoryPrisma {
         return result ?? null;
     };
 
+    async setAccessCode(email: string, code: number): Promise<Client> {
+        const result = await prismaClient.client.update({
+            where: { email: email },
+            data: { accessCode: code }
+        });
+
+        return result;
+    };
+
+    async setToken(email: string, token: string): Promise<Client> {
+        const result = await prismaClient.client.update({
+            where: { email: email },
+            data: { token: token }
+        });
+
+        return result;
+    };
+
 };
 
 export { ClientRepositoryPrisma };

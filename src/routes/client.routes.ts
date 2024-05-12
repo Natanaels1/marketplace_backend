@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 
 import { ClientCreate } from "../interfaces/client.interface";
 import { ClientUseCase } from "../usecases/client.usecase";
+import { ConfirmAccessCode, Login } from "../interfaces/user.interface";
 
 export async function clientRoutes(fastify: FastifyInstance) {
     
@@ -20,6 +21,33 @@ export async function clientRoutes(fastify: FastifyInstance) {
             });
 
             reply.send("Usuário cadastrado com sucesso.").status(200);
+        } catch (err) {
+            reply.send(err);
+        }
+    });
+    
+    fastify.post("/login", async (req, reply) => {
+
+        const { email } = req.body as Login;
+
+        try {
+            const data = await clientUseCase.login({email});
+
+            reply.send(data).status(200);
+
+        } catch (err) {
+            reply.send(err);
+        }
+    });
+
+    fastify.post("/confirmAccessCode", async (req, reply) => {
+        const { email, code } = req.body as ConfirmAccessCode;
+
+        try {
+            const data = await clientUseCase.confirmAccessCode({email, code});
+
+            reply.send(data).status(200);
+
         } catch (err) {
             reply.send(err);
         }

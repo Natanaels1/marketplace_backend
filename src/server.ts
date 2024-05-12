@@ -4,6 +4,7 @@ import cors from "@fastify/cors";
 import { userRoutes } from "./routes/user.routes";
 import { categoryRoutes } from "./routes/category.routes";
 import { clientRoutes } from "./routes/client.routes";
+import { serviceRoutes } from "./routes/service.routes";
 
 const app: FastifyInstance = Fastify();
 
@@ -21,6 +22,10 @@ const start = async () => {
 
     await app.register(clientRoutes, {
         prefix: "clients"
+    });
+
+    await app.register(serviceRoutes, {
+        prefix: "services"
     });
 
     try {
